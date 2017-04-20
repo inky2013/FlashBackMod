@@ -27,6 +27,7 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void init(FMLInitializationEvent event) {
         super.init(event);
+        FlashBackKeyBind.load();
         eventHandlerClient = new EventHandlerClient();
         MinecraftForge.EVENT_BUS.register(eventHandlerClient);
     }
@@ -34,7 +35,6 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void postInit(FMLPostInitializationEvent event) {
         super.postInit(event);
-        FlashBackKeyBind.load();
     }
 
     @Override

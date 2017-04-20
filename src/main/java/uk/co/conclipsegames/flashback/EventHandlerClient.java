@@ -23,7 +23,9 @@ public class EventHandlerClient {
     }
     @SubscribeEvent(priority = EventPriority.NORMAL)
     public void keyPressEvent(InputEvent.KeyInputEvent e) {
-        FlashBackHandler.flash_back(proxy.player.getDisplayNameString());
+        if (FlashBackKeyBind.isFlashBackKeyDown()) {
+            FlashBackHandler.flash_back(proxy.player.getDisplayNameString());
+        }
     }
 
 }
