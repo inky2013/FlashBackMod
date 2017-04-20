@@ -47,6 +47,7 @@ public class FlashBack {
     @Mod.EventHandler
     public void serverLoad(FMLServerStartingEvent event) {
         server = event.getServer();
+        proxy.serverLoad(event);
     }
 
 }

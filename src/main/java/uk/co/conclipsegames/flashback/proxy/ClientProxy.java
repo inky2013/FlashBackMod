@@ -1,12 +1,14 @@
 package uk.co.conclipsegames.flashback.proxy;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import uk.co.conclipsegames.flashback.EventHandlerCommon;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import uk.co.conclipsegames.flashback.EventHandlerClient;
 import uk.co.conclipsegames.flashback.FBLogger;
-import uk.co.conclipsegames.flashback.FlashBack;
 import uk.co.conclipsegames.flashback.FlashBackKeyBind;
 
 /**
@@ -14,8 +16,8 @@ import uk.co.conclipsegames.flashback.FlashBackKeyBind;
  */
 public class ClientProxy extends CommonProxy {
 
-    public EventHandlerCommon eventHandlerClient;
-    public FlashBackKeyBind flashBackKeyBind;
+    public EntityPlayer player;
+    public EventHandlerClient eventHandlerClient;
 
     @Override
     public void preInit(FMLPreInitializationEvent event) {
@@ -25,16 +27,19 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void init(FMLInitializationEvent event) {
         super.init(event);
-        FBLogger.info("I DID RUN");
-        flashBackKeyBind.load();
-        flashBackKeyBind = new FlashBackKeyBind();
-        eventHandlerClient = new EventHandlerCommon();
+        eventHandlerClient = new EventHandlerClient();
         MinecraftForge.EVENT_BUS.register(eventHandlerClient);
     }
 
     @Override
     public void postInit(FMLPostInitializationEvent event) {
         super.postInit(event);
+        FlashBackKeyBind.load();
+    }
+
+    @Override
+    public void serverLoad(FMLServerStartingEvent event) {
+        player = Minecraft.getMinecraft().thePlayer;
     }
 
 }
