@@ -3,9 +3,8 @@ package uk.co.conclipsegames.flashback;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-
-import static uk.co.conclipsegames.flashback.FlashBack.proxy;
 
 /**
  * Created by ethan on 15/04/2017.
@@ -24,8 +23,13 @@ public class EventHandlerClient {
     @SubscribeEvent(priority = EventPriority.NORMAL)
     public void keyPressEvent(InputEvent.KeyInputEvent e) {
         if (FlashBackKeyBind.isFlashBackKeyDown()) {
-            FlashBackHandler.flash_back(proxy.player.getDisplayNameString());
+            FlashBackHandler.flash_back();
         }
+    }
+    @SubscribeEvent(priority = EventPriority.NORMAL)
+            public void PlayerEvent(PlayerEvent.PlayerLoggedInEvent e)
+    {
+        //FBLogger.info(Minecraft.getMinecraft().thePlayer.getDisplayNameString());
     }
 
 }

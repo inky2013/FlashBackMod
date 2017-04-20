@@ -1,6 +1,6 @@
 package uk.co.conclipsegames.flashback.proxy;
 
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
  */
 public class CommonProxy {
 
-    public EntityPlayer player;
+    public EntityPlayerSP player;
 
     public void preInit(FMLPreInitializationEvent event) {
 

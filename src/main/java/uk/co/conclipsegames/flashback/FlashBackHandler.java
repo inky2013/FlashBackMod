@@ -1,6 +1,8 @@
 package uk.co.conclipsegames.flashback;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -20,7 +22,8 @@ public class FlashBackHandler {
         p.add_pos(pta);
     }
 
-    public static void flash_back(String playername) {
+    public static void flash_back() {
+        String playername = Minecraft.getMinecraft().thePlayer.getDisplayNameString();
         System.out.println(players);
         List<Double[]> fblist = players.get(playername).get_fb_pos();
         System.out.println(fblist);

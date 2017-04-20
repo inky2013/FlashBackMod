@@ -1,14 +1,13 @@
 package uk.co.conclipsegames.flashback.proxy;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import uk.co.conclipsegames.flashback.EventHandlerClient;
-import uk.co.conclipsegames.flashback.FBLogger;
 import uk.co.conclipsegames.flashback.FlashBackKeyBind;
 
 /**
@@ -16,7 +15,7 @@ import uk.co.conclipsegames.flashback.FlashBackKeyBind;
  */
 public class ClientProxy extends CommonProxy {
 
-    public EntityPlayer player;
+    public EntityPlayerSP player;
     public EventHandlerClient eventHandlerClient;
 
     @Override
@@ -39,7 +38,7 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void serverLoad(FMLServerStartingEvent event) {
-        player = Minecraft.getMinecraft().thePlayer;
+
     }
 
 }
