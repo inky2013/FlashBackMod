@@ -1,13 +1,13 @@
 package uk.co.conclipsegames.flashback;
 
 import net.minecraft.server.MinecraftServer;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import uk.co.conclipsegames.flashback.Item.ModItems;
 import uk.co.conclipsegames.flashback.proxy.CommonProxy;
 
 /**
@@ -32,6 +32,7 @@ public class FlashBack {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
         proxy.preInit(e);
+        ModItems.init();
     }
 
     @Mod.EventHandler
