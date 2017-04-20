@@ -5,6 +5,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import uk.co.conclipsegames.flashback.Item.ItemBase;
 
 /**
  * Created by ethan on 15/04/2017.
@@ -26,5 +27,8 @@ public class CommonProxy {
     }
     public void serverLoad(FMLServerStartingEvent event) {
 
+    }
+
+    public void registerItemRenderer(ItemBase itemBase, int i, String name) {
     }
 }

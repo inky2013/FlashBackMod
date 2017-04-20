@@ -2,6 +2,8 @@ package uk.co.conclipsegames.flashback;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 import java.util.HashMap;
 import java.util.List;
@@ -24,20 +26,23 @@ public class FlashBackHandler {
 
     public static void flash_back() {
         String playername = Minecraft.getMinecraft().thePlayer.getDisplayNameString();
-        System.out.println(players);
-        List<Double[]> fblist = players.get(playername).get_fb_pos();
-        System.out.println(fblist);
-        EntityPlayer player = FlashBack.instance.server.getPlayerList().getPlayerByUsername(playername);
-        if (fblist == null || player == null) {
-            return;
-        }
-        Double[] cv = fblist.get(0);
-        if (cv == null) {
-            return;
-        }
-        player.setPositionAndUpdate(cv[0], cv[1], cv[2]);
+        ItemStack stone = new ItemStack(Item.getByNameOrId("stone"));
+        if(Minecraft.getMinecraft().thePlayer.inventory.hasItemStack(stone))
+        {
+            System.out.println(players);
+            List<Double[]> fblist = players.get(playername).get_fb_pos();
+            System.out.println(fblist);
+            EntityPlayer player = FlashBack.instance.server.getPlayerList().getPlayerByUsername(playername);
+            if (fblist == null || player == null) {
+                return;
+            }
+            Double[] cv = fblist.get(0);
+            if (cv == null) {
+                return;
+            }
+            player.setPositionAndUpdate(cv[0], cv[1], cv[2]);
 
-
+        }
     }
 
 }
